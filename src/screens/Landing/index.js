@@ -18,7 +18,11 @@ const Landing = () => {
 
   const questionList = [
     {
-      mainHeader: 'Welcome to My Concierge.',
+      mainHeader: (
+        <span>
+          <span className='small-sec'>welcome to</span> My Concierge.
+        </span>
+      ),
       secHeader: `What's your first name?`,
       name: 'firstName',
       value: firstName
@@ -30,7 +34,11 @@ const Landing = () => {
       value: destCity
     },
     {
-      mainHeader: `Ahh ${destCity}, great choice!`,
+      mainHeader: (
+        <span>
+          Ahh {destCity}, <span className='small-sec'>great choice!</span>
+        </span>
+      ),
       secHeader: `Where are you leaving from? (city, country of airport)`,
       name: 'originCity',
       value: originCity

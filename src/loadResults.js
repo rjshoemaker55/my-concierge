@@ -1,5 +1,6 @@
+const axios = require('axios');
+
 const loadResults = items => {
-  console.log('load results');
   console.log(items);
 };
 
