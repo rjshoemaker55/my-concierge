@@ -1,11 +1,21 @@
 const express = require('express');
-const PORT = 5000;
 const app = express();
+const path = require('path');
+const port = process.env.PORT || 8080;
 
-app.use(express.json({ extended: false }));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/', (req, res) => res.send('API Running'));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('*', (req, res) => {
+    res.sendfile(path.join((__dirname = 'client/build/index.html')));
+  });
+}
 
-app.use('/search', require('./apiRoutes2'));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/public/index.html'));
+});
 
-app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
+app.listen(port, (req, res) => {
+  console.log(`App listening on port: ${port}`);
+});
