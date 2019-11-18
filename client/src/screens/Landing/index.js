@@ -39,7 +39,7 @@ const Landing = () => {
           Ahh {destCity}, <span className='small-sec'>great choice!</span>
         </span>
       ),
-      secHeader: `Where are you leaving from? (city, country of airport)`,
+      secHeader: `Where are you leaving from? (city of airport)`,
       name: 'originCity',
       value: originCity
     },
