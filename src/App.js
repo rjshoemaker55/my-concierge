@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path='/' component={Landing} />
+        <Route exact path={process.env.PUBLIC_URL + '/'} component={Landing} />
         <Route exact path='/results' component={Results} />
       </Switch>
     </Router>
