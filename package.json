@@ -34,7 +34,5 @@
   },
   "devDependencies": {
     "gh-pages": "^2.1.1"
-  },
-  "homepage": "https://rocky-wildwood-26980.herokuapp.com/",
-  "proxy": "http://localhost:8080"
+  }
 }
