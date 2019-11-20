@@ -1,68 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# My Concierge
+![My Concierge Screenshot](https://i.ibb.co/X4DcD1T/Screen-Shot-2019-11-19-at-9-10-10-PM.png)
 
-## Available Scripts
+My Concierge is an elegant virtual travel assistant. It provides a simplistic, minimalist approach to searching for hotels and flights.
 
-In the project directory, you can run:
+## Work in Progress
+Due to API issues, the flight and hotel searches are not currently working. We have included some placeholder flights for the time being, but this functionality will be completed shortly.
 
-### `yarn start`
+### What's to come
+Besides the flight and hotel search functionality, we will also be adding:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ 1. [ ] Validation for form inputs
+ 2. [ ] Back and forward buttons for form
+ 3. [ ] User accounts for saving searches
+ 
+ Will add other options as they come to mind.
+## How to use
+Visit the deployed app [Here](https://rjshoemaker55.github.io/myconcierge/)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+**or**
+ 1. Clone the project to your machine
+ 2. Run `yarn` or `npm install` to install the necessary dependencies
+ 3. Run `yarn start` or `npm start` and navigate to [http://localhost:5000](http://localhost:5000)`in your browser
