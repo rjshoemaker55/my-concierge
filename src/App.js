@@ -10,7 +10,8 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path={process.env.PUBLIC_URL + '/'} component={Landing} />
+        <Route exact path={process.env.PUBLIC_URL + '/'} component={Landing} />{' '}
+        {/* PUBLIC_URL so landing page works on GH Pages */}
         <Route exact path='/results' component={Results} />
       </Switch>
     </Router>

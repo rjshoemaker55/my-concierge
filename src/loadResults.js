@@ -1,5 +1,7 @@
 const axios = require('axios');
 
+// Using Skyscanner API for now after Kajak was discontinued
+
 const loadResults = items => {
   return new Promise((resolve, reject) => {
     const { firstName, destCity, originCity, depDate, returnDate } = items;
@@ -9,6 +11,9 @@ const loadResults = items => {
     let originCityName;
     let destCityName;
 
+    // TODO: Combine two below functions into one for optimization
+
+    // Get origin city ID to use for flight search request
     const getOriginCityId = () => {
       axios({
         method: 'GET',
@@ -35,6 +40,7 @@ const loadResults = items => {
         });
     };
 
+    // Get destination city id to use for flight search request
     const getDestCityId = () => {
       axios({
         method: 'GET',
@@ -72,6 +78,7 @@ const loadResults = items => {
         returnDate
       };
 
+      // Send back response to landing page
       resolve(returnObj);
 
       // Getting 500 error from the below request, inserting dummy data instead of response for now

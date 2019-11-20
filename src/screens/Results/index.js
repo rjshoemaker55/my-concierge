@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import FlightDisplay from '../../components/FlightDisplay';
 import './styles.css';
 
+// flightList contains dummy data for flights until API is working
 const flightList = require('../../flightList.json').flights;
 
 console.log(flightList);

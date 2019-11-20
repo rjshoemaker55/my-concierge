@@ -60,8 +60,10 @@ const Landing = () => {
     }
   ];
 
+  // Sets current question to the question data with index of question number in state
   let currentQuestion = questionList[questionNumber];
 
+  // Sets data in state based on input changes
   const handleChange = e => {
     switch (e.target.name) {
       case 'firstName':
@@ -82,6 +84,8 @@ const Landing = () => {
     }
   };
 
+  // Initiates handleFinish if all questions have been answereed
+  // If not, icreases question number by 1, and sets the currentQuestion so the displayed question changes
   const handleSubmit = async e => {
     e.preventDefault();
 
@@ -93,6 +97,7 @@ const Landing = () => {
     currentQuestion = questionList[questionNumber];
   };
 
+  // Calls loadResults function with all input data, then redirects to results page and sends the response as props
   const handleFinish = () => {
     setShowModal(true);
     loadResults({
