@@ -1,0 +1,12 @@
+{
+  "flights": [
+    {
+      "depTime": "4:30pm",
+      "arriveTime": "7:30pm",
+      "duration": "3 hours",
+      "airline": "American Airlines",
+      "airlineLogo": "https://static.dezeen.com/uploads/2013/01/dezeen_American-Airlines-logo-and-livery_4a.jpg",
+      "flightNumber": "AA-170"
+    }
+  ]
+}

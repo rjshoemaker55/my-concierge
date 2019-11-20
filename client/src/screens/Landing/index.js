@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { BrowserHistory } from 'react-router';
 import { Modal } from 'react-bootstrap';
 
 import FormQuestion from '../../components/FormQuestion';
@@ -8,6 +10,7 @@ import loadResults from '../../loadResults';
 import './styles.css';
 
 const Landing = () => {
+  let history = useHistory();
   const [firstName, setFirstName] = useState('');
   const [destCity, setDestCity] = useState('');
   const [originCity, setOriginCity] = useState('');
@@ -98,6 +101,11 @@ const Landing = () => {
       originCity,
       depDate,
       returnDate
+    }).then(res => {
+      history.push({
+        pathname: '/results',
+        state: res
+      });
     });
   };
 
