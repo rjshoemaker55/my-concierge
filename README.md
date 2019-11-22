@@ -19,5 +19,5 @@ Visit the deployed app [Here](https://rjshoemaker55.github.io/myconcierge/)
 
 **or**
  1. Clone the project to your machine
- 2. Run `yarn` or `npm install` to install the necessary dependencies
+ 2. Run `yarn` or `npm install` to install the necessary dependencies (delete yarn.lock file if you are using npm)
  3. Run `yarn start` or `npm start` and navigate to [http://localhost:5000](http://localhost:5000) in your browser
