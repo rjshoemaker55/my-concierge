@@ -5,7 +5,7 @@ import { Modal } from 'react-bootstrap';
 
 import FormQuestion from '../../components/FormQuestion';
 
-import loadResults from '../../loadResults';
+import { loadResults } from '../../loadResults';
 
 import './styles.css';
 
