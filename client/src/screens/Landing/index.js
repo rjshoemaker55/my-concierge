@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { BrowserHistory } from 'react-router';
 import { Modal } from 'react-bootstrap';
-
-import FormQuestion from '../../components/FormQuestion';
-
 import { loadResults } from '../../loadResults';
-
+import FormQuestion from '../../components/FormQuestion';
 import './styles.css';
 
 const Landing = () => {
@@ -100,18 +97,15 @@ const Landing = () => {
   // Calls loadResults function with all input data, then redirects to results page and sends the response as props
   const handleFinish = () => {
     setShowModal(true);
-    loadResults({
-      firstName,
-      destCity,
-      originCity,
-      depDate,
-      returnDate
-    }).then(res => {
-      history.push({
-        pathname: '/results',
-        state: res
-      });
-    });
+    loadResults({ firstName, destCity, originCity, depDate, returnDate }).then(
+      res => {
+        // console.log(res);
+        // history.push({
+        //   pathname: '/results',
+        //   state: res
+        // });
+      }
+    );
   };
 
   return (

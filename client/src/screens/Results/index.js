@@ -4,11 +4,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 import FlightDisplay from '../../components/FlightDisplay';
 import './styles.css';
 
-// flightList contains dummy data for flights until API is working
-const flightList = require('../../flightList.json').flights;
-
-console.log(flightList);
-
 const Results = props => {
   const {
     firstName,
@@ -19,6 +14,17 @@ const Results = props => {
     depDate,
     returnDate
   } = props.location.state;
+
+  const flightList = [
+    {
+      depTime: 1,
+      arriveTime: 1,
+      duration: 1,
+      airline: 1,
+      airlineLogo: 1,
+      flightNumber: 1
+    }
+  ];
 
   return (
     <>
