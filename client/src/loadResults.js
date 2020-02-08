@@ -22,8 +22,8 @@ export const loadResults = async data => {
   };
 
   const flightSearch = async (originAirport, destAirport) => {
-    fetch(
-      'https://tripadvisor1.p.rapidapi.com/flights/create-session?currency=USD&ta=1&tc=11%252C5&c=0&d1=CNX&o1=DMK&dd1=2020-01-08',
+    const response = await fetch(
+      `https://tripadvisor1.p.rapidapi.com/flights/create-session?currency=USD&ta=1&tc=11%252C5&c=0&d1=${destAirport}&o1=${originAirport}&dd1=${depDate}`,
       {
         method: 'GET',
         headers: {
@@ -32,6 +32,8 @@ export const loadResults = async data => {
         }
       }
     );
+    const json = await response.json();
+    return json;
   };
 
   await airportSearch(originCity).then(
@@ -40,6 +42,10 @@ export const loadResults = async data => {
   await airportSearch(destCity).then(
     res => (flightData.destCityAirport = res[0].code)
   );
+  await flightSearch(
+    flightData.originCityAirport,
+    flightData.destCityAirport
+  ).then(res => console.log(res));
 
   console.log(flightData);
 };
