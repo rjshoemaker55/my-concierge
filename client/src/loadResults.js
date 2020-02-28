@@ -51,9 +51,10 @@ export const loadResults = async data => {
     return json;
   };
 
-  await airportSearch(originCity).then(
-    res => (flightData.originCityAirport = res[0].code)
-  );
+  await airportSearch(originCity).then(res => {
+    console.log(`Airport search: ${JSON.stringify(res)}`);
+    flightData.originCityAirport = res[0].code;
+  });
   await airportSearch(destCity).then(
     res => (flightData.destCityAirport = res[0].code)
   );
@@ -61,7 +62,9 @@ export const loadResults = async data => {
     flightData.originCityAirport,
     flightData.destCityAirport
   ).then(res => {
+    console.log(`Flight search: ${JSON.stringify(res)}`);
     flightPoll(res.search_params.sid).then(res2 => {
+      console.log(`Flight poll: ${JSON.stringify(res2, 4, null)}`);
       let flight = res2.itineraries[0];
       let ap1code = flight.f[0].l[0].da;
       let legs = [
