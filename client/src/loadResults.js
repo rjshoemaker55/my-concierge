@@ -52,7 +52,6 @@ export const loadResults = async data => {
   };
 
   await airportSearch(originCity).then(res => {
-    console.log(`Airport search: ${JSON.stringify(res)}`);
     flightData.originCityAirport = res[0].code;
   });
   await airportSearch(destCity).then(
@@ -62,25 +61,29 @@ export const loadResults = async data => {
     flightData.originCityAirport,
     flightData.destCityAirport
   ).then(res => {
-    console.log(`Flight search: ${JSON.stringify(res)}`);
     flightPoll(res.search_params.sid).then(res2 => {
-      console.log(`Flight poll: ${JSON.stringify(res2, 4, null)}`);
+      console.log(JSON.stringify(res2, null, 2));
       let flight = res2.itineraries[0];
-      let ap1code = flight.f[0].l[0].da;
-      let legs = [
-        {
-          ap1: {
-            code: ap1code,
-            name: res2.airports.forEach(
-              airport => airport.c == ap1code && airport.n
-            )
+
+      let legs = [];
+
+      flight.f[0].l.forEach(leg => {
+        legs.push({
+          departureAirport: {
+            code: leg.da,
+            name: res2.airports.find(airport => airport.c == leg.da).n
+          },
+          arrivalAirport: {
+            code: leg.aa,
+            name: res2.airports.find(airport => airport.c == leg.aa).n
+          },
+          dates: {
+            departureDate: leg.dd,
+            arrivalDate: leg.ad
           }
-        }
-      ];
-      res2.airports.forEach(airport => console.log(airport));
-      console.log(res2);
-      console.log(flight);
-      console.log(legs);
+        });
+      });
+      console.log(`Legs: ${JSON.stringify(legs, null, 2)}`);
     });
   });
 };
