@@ -10,8 +10,7 @@ const Landing = () => {
   let history = useHistory();
   const [firstName, setFirstName] = useState('');
   const [destCity, setDestCity] = useState('');
-  const [originCity, setOriginCity] = useState('');
-  const [depDate, setDepDate] = useState('');
+  const [arriveDate, setArriveDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
   const [questionNumber, setQuestionNumber] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -25,13 +24,13 @@ const Landing = () => {
       ),
       secHeader: `What's your first name?`,
       name: 'firstName',
-      value: firstName
+      value: firstName,
     },
     {
       mainHeader: `Hello ${firstName}!`,
-      secHeader: `Where are you headed? (city of airport)`,
+      secHeader: `Where are you headed? (city name)`,
       name: 'destCity',
-      value: destCity
+      value: destCity,
     },
     {
       mainHeader: (
@@ -39,29 +38,23 @@ const Landing = () => {
           Ahh {destCity}, <span className='small-sec'>great choice!</span>
         </span>
       ),
-      secHeader: `Where are you leaving from? (city of airport)`,
-      name: 'originCity',
-      value: originCity
-    },
-    {
-      mainHeader: `Got it. ${originCity} to ${destCity}.`,
-      secHeader: `When are you leaving (YYYY-MM-DD)?`,
-      name: 'depDate',
-      value: depDate
+      secHeader: `When will you be arriving (YYYY-MM-DD)?`,
+      name: 'arriveDate',
+      value: arriveDate,
     },
     {
       mainHeader: 'Last step!',
-      secHeader: `When will you be returning (YYYY-MM-DD)?`,
+      secHeader: `Okay, and when will you be returning (YYYY-MM-DD)?`,
       name: 'returnDate',
-      value: returnDate
-    }
+      value: returnDate,
+    },
   ];
 
   // Sets current question to the question data with index of question number in state
   let currentQuestion = questionList[questionNumber];
 
   // Sets data in state based on input changes
-  const handleChange = e => {
+  const handleChange = (e) => {
     switch (e.target.name) {
       case 'firstName':
         setFirstName(e.target.value);
@@ -69,11 +62,8 @@ const Landing = () => {
       case 'destCity':
         setDestCity(e.target.value);
         break;
-      case 'originCity':
-        setOriginCity(e.target.value);
-        break;
-      case 'depDate':
-        setDepDate(e.target.value);
+      case 'arriveDate':
+        setArriveDate(e.target.value);
         break;
       case 'returnDate':
         setReturnDate(e.target.value);
@@ -83,10 +73,10 @@ const Landing = () => {
 
   // Initiates handleFinish if all questions have been answereed
   // If not, icreases question number by 1, and sets the currentQuestion so the displayed question changes
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (questionNumber === 4) {
+    if (questionNumber === 3) {
       return handleFinish();
     }
 
@@ -97,15 +87,14 @@ const Landing = () => {
   // Calls loadResults function with all input data, then redirects to results page and sends the response as props
   const handleFinish = () => {
     setShowModal(true);
-    loadResults({ firstName, destCity, originCity, depDate, returnDate }).then(
-      res => {
-        // console.log(res);
-        // history.push({
-        //   pathname: '/results',
-        //   state: res
-        // });
-      }
-    );
+    loadResults({ firstName, destCity, arriveDate, returnDate }).then((res) => {
+      console.log(res);
+      // console.log(res);
+      // history.push({
+      //   pathname: '/results',
+      //   state: res
+      // });
+    });
   };
 
   return (
