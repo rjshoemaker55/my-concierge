@@ -11,7 +11,7 @@ const Landing = () => {
   const [firstName, setFirstName] = useState('');
   const [destCity, setDestCity] = useState('');
   const [arriveDate, setArriveDate] = useState('');
-  const [returnDate, setReturnDate] = useState('');
+  const [numberNights, setNumberNights] = useState('');
   const [questionNumber, setQuestionNumber] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
@@ -44,9 +44,9 @@ const Landing = () => {
     },
     {
       mainHeader: 'Last step!',
-      secHeader: `Okay, and when will you be returning (YYYY-MM-DD)?`,
-      name: 'returnDate',
-      value: returnDate,
+      secHeader: `Alright, and how many nights will you be staying?`,
+      name: 'numberNights',
+      value: numberNights,
     },
   ];
 
@@ -65,8 +65,8 @@ const Landing = () => {
       case 'arriveDate':
         setArriveDate(e.target.value);
         break;
-      case 'returnDate':
-        setReturnDate(e.target.value);
+      case 'numberNights':
+        setNumberNights(e.target.value);
         break;
     }
   };
@@ -87,14 +87,16 @@ const Landing = () => {
   // Calls loadResults function with all input data, then redirects to results page and sends the response as props
   const handleFinish = () => {
     setShowModal(true);
-    loadResults({ firstName, destCity, arriveDate, returnDate }).then((res) => {
-      console.log(res);
-      // console.log(res);
-      // history.push({
-      //   pathname: '/results',
-      //   state: res
-      // });
-    });
+    loadResults({ firstName, destCity, arriveDate, numberNights }).then(
+      (res) => {
+        console.log(res);
+        // console.log(res);
+        // history.push({
+        //   pathname: '/results',
+        //   state: res
+        // });
+      }
+    );
   };
 
   return (
