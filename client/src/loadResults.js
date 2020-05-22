@@ -1,23 +1,9 @@
 export const loadResults = async (data) => {
   const { firstName, destCity, arriveDate, numberNights } = data;
 
-  let options = {
-    method: 'GET',
-    headers: {
-      'x-rapidapi-host': 'tripadvisor1.p.rapidapi.com',
-      'x-rapidapi-key': '2f3a0e5559mshf0b9a7a94324ff7p1bf4dajsna06e1715474c',
-    },
-  };
-
-  let locationQueryString = `
-    https://tripadvisor1.p.rapidapi.com/locations/auto-complete?lang=en_US&units=mi&query=${destCity}
-  `;
-
-  const getLocationId = async (locationQueryString) => {
-    const locationQuery = await fetch(locationQueryString, options);
-    const locationResponse = await locationQuery.json();
-    return locationResponse.data[0].result_object.location_id;
-  };
-
-  getLocationId(locationQueryString).then((res) => console.log(res));
+  const getLocationId = await fetch(
+    `http://localhost:4000/locationid/${destCity}`
+  )
+    .then((response) => response.json())
+    .then((parsedId) => parsedId);
 };
