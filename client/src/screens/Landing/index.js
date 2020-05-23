@@ -85,18 +85,16 @@ const Landing = () => {
   };
 
   // Calls loadResults function with all input data, then redirects to results page and sends the response as props
-  const handleFinish = () => {
+  const handleFinish = async () => {
     setShowModal(true);
-    loadResults({ firstName, destCity, arriveDate, numberNights }).then(
-      (res) => {
-        console.log(res);
-        // console.log(res);
-        // history.push({
-        //   pathname: '/results',
-        //   state: res
-        // });
-      }
-    );
+    let hotelList = await loadResults({
+      firstName,
+      destCity,
+      arriveDate,
+      numberNights,
+    });
+
+    console.log(hotelList);
   };
 
   return (

@@ -25,14 +25,23 @@ app.get('/locationid/:cityName', async (req, res) => {
     https://tripadvisor1.p.rapidapi.com/locations/auto-complete?lang=en_US&units=mi&query=${destCity}
   `;
 
-  const locationQuery = await fetch(locationQueryString, {
-    options,
-  });
+  const locationQuery = await fetch(locationQueryString, options);
   const locationResponse = await locationQuery.json();
-  console.log(locationResponse.data[0].result_object.location_id);
   res.send(locationResponse.data[0].result_object.location_id);
 });
 
-app.get('/hotellist/:locationid/:checkin/:nights');
+app.get('/hotellist/:locationid/:checkin/:nights', async (req, res) => {
+  console.log('Hit hotellist GET route');
+
+  let locationId = req.params.locationid;
+  let checkIn = req.params.checkin;
+  let nights = req.params.nights;
+
+  let hotelListQueryString = `https://tripadvisor1.p.rapidapi.com/hotels/list?offset=0&currency=USD&limit=30&order=asc&lang=en_US&sort=recommended&location_id=${locationId}&adults=1&checkin=${checkIn}&rooms=1&nights=${nights})`;
+
+  const hotelListQuery = await fetch(hotelListQueryString, options);
+  const hotelListResponse = await hotelListQuery.json();
+  res.send(hotelListResponse.data);
+});
 
 app.listen(port, () => console.log(`app listening on port ${port}`));
