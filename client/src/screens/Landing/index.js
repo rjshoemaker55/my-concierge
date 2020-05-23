@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { BrowserHistory } from 'react-router';
 import { Modal } from 'react-bootstrap';
 import { loadResults } from '../../loadResults';
+import Results from '../Results/index';
 import FormQuestion from '../../components/FormQuestion';
 import './styles.css';
 
@@ -94,7 +95,10 @@ const Landing = () => {
       numberNights,
     });
 
-    console.log(hotelList);
+    history.push({
+      pathname: '/results',
+      state: { hotelList },
+    });
   };
 
   return (
