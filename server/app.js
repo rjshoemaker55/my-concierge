@@ -14,8 +14,6 @@ let options = {
   },
 };
 
-app.get('/', (req, res) => res.send('Hello world'));
-
 app.get('/locationid/:cityName', async (req, res) => {
   console.log('Hit locationid GET route');
 
