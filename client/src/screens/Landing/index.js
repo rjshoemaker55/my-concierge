@@ -102,7 +102,7 @@ const Landing = () => {
   };
 
   return (
-    <div className='main-div'>
+    <div className='landing-wrapper'>
       <FormQuestion
         mainHeader={currentQuestion.mainHeader}
         secHeader={currentQuestion.secHeader}

@@ -56,6 +56,10 @@
   margin-bottom: 10px;
 }
 
+.hotel-list {
+  margin-top: 66px;
+}
+
 @media screen and (max-width: 578px) {
   #results-page-wrapper {
     margin-top: 40px;

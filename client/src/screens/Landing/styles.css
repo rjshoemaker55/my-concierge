@@ -1,6 +1,10 @@
-.main-div {
-  width: 100%;
+.landing-wrapper {
   margin: auto;
+  background-image: url('../../images/Background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Karla', sans-serif;
+  min-height: 100vh;
 }
 
 .modal {

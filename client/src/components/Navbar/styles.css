@@ -1,0 +1,9 @@
+.navbar-wrapper {
+  background-color: rgb(5, 5, 12);
+  padding: 5px 10px;
+  color: rgb(151, 151, 151);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
