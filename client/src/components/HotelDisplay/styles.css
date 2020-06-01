@@ -1,3 +1,28 @@
-.hotelDisplay {
-  background-image: ;
+.hotel-info-header {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  border-bottom: 2px white solid;
+  background: rgba(255, 255, 255, 0.219);
+  padding: 5px 15px;
+}
+
+.hotel-info-body {
+  padding: 15px;
+}
+
+.hotel-ranking-text {
+  color: white;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

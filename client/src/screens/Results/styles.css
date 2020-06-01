@@ -4,7 +4,6 @@
   border-radius: 10px;
   padding: 20px;
   margin-top: 40px;
-  position: relative;
 }
 
 #results-header {
@@ -30,44 +29,6 @@
   text-align: center;
 }
 
-.flight-hotel-wrapper {
-  background: rgb(213, 172, 136, 0.65);
-  border-radius: 10px;
-  margin: 0px 20px 10px 20px;
-  justify-content: center;
-  align-items: center;
-  padding-top: 10px;
-}
-
-.flight-hotel-header {
-  font-weight: bold;
-  text-align: center;
-}
-
-.my-concierge-footer {
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  font-size: 45px;
-}
-
-#to-be-added {
-  font-family: 'Lobster', cursive;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
 .hotel-list {
-  margin-top: 60px;
-}
-
-@media screen and (max-width: 578px) {
-  #results-page-wrapper {
-    margin-top: 40px;
-    padding: 10px;
-  }
-
-  #results-header {
-    font-size: 35px;
-  }
+  margin-top: 57px;
 }
