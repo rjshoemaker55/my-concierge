@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { BrowserHistory } from 'react-router';
-import { Modal } from 'react-bootstrap';
 import Navbar from '../../components/Navbar';
 import { loadResults } from '../../loadResults';
 import Results from '../Results/index';
@@ -14,11 +13,9 @@ const Landing = () => {
   const [arriveDate, setArriveDate] = useState('');
   const [numberNights, setNumberNights] = useState('');
   const [questionNumber, setQuestionNumber] = useState(0);
-  const [showModal, setShowModal] = useState(false);
 
   // Calls loadResults function with all input data, then redirects to results page and sends the response as props
   const handleFinish = async () => {
-    setShowModal(true);
     let hotelList = await loadResults({
       firstName,
       destCity,
@@ -41,12 +38,6 @@ const Landing = () => {
           <div className='landing-small-header'>welcome to</div>
           <div className='landing-header'>my concierge</div>
         </div>
-
-        <Modal show={showModal}>
-          <Modal.Header>
-            <Modal.Title>Please wait while we load your results...</Modal.Title>
-          </Modal.Header>
-        </Modal>
       </div>
     </>
   );
