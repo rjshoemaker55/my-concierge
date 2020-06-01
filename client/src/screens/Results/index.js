@@ -13,6 +13,7 @@ const Results = (props) => {
       <div className='hotel-list'>
         {hotelList.map((hotel) => (
           <HotelDisplay
+            key={hotel.name}
             name={hotel.name}
             locationString={hotel.location_string}
             smallPhoto={hotel.photo.images.small.url}

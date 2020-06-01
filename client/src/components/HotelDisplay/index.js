@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import './styles.css';
 
 const HotelDisplay = (props) => {
+  const [showInfo, setShowInfo] = useState('none');
   const largePhotoUrl = props.largePhoto;
 
   const HotelWrapper = styled.div`
@@ -30,12 +31,19 @@ const HotelDisplay = (props) => {
     font-weight: bold;
   `;
 
+  const HotelInfoWrapper = styled.div`
+    display: ${showInfo};
+  `;
+
   return (
-    <HotelWrapper>
+    <HotelWrapper
+      onClick={(e) => setShowInfo(showInfo === 'none' ? 'block' : 'none')}
+    >
       <HotelHeadingWrapper>
-        <HotelMainHeading>{props.name}</HotelMainHeading>
-        <HotelSecHeading>{props.locationString}</HotelSecHeading>
+        <HotelMainHeading>{props.name.toLowerCase()}</HotelMainHeading>
+        <HotelSecHeading>{props.locationString.toLowerCase()}</HotelSecHeading>
       </HotelHeadingWrapper>
+      <HotelInfoWrapper>Info</HotelInfoWrapper>
     </HotelWrapper>
   );
 };

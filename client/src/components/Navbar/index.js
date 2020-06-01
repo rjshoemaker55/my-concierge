@@ -12,7 +12,7 @@ const Navbar = () => {
         <input className='navbar-inputs' placeholder='city' />
         <input className='navbar-inputs' placeholder='arrival date' />
         <input className='navbar-inputs' placeholder='nights' />
-        <div id='navbar-submit-button'>Go</div>
+        <div id='navbar-submit-button'>go</div>
       </div>
     </div>
   );
