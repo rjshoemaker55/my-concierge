@@ -13,6 +13,7 @@ const HotelDisplay = (props) => {
     width: 100%;
     height: 400px;
     background-attachment: fixed;
+    position: relative;
   `;
 
   const HotelHeadingWrapper = styled.div`
@@ -33,6 +34,11 @@ const HotelDisplay = (props) => {
 
   const HotelInfoWrapper = styled.div`
     display: ${showInfo};
+    position: absolute;
+    right: 0;
+    width: 45%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
   `;
 
   return (
