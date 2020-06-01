@@ -18,7 +18,8 @@ const HotelDisplay = (props) => {
   `;
 
   const HotelHeadingWrapper = styled.div`
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 20px;
   `;
 
   const HotelMainHeading = styled.h1`
@@ -28,7 +29,7 @@ const HotelDisplay = (props) => {
   `;
 
   const HotelSecHeading = styled.h2`
-    color: black;
+    color: rgb(132, 193, 204);
     font-size: 23px;
     font-weight: bold;
   `;
