@@ -63,6 +63,16 @@
   cursor: pointer;
 }
 
+#sort-dropdown {
+  margin-left: 50px;
+  padding: 3px 6px;
+  background: rgba(255, 255, 255, 0.5);
+  color: rgb(36, 36, 36);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
 .modal {
   margin-top: 100px;
 }

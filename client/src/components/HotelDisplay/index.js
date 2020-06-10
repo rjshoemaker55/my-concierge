@@ -66,12 +66,12 @@ const HotelDisplay = (props) => {
         <div className='hotel-info-header'>information</div>
         <div className='hotel-info-body'>
           <div className='hotel-ranking-text'>"{props.rankingText}"</div>
-          <div className='hotel-price-display'>{props.price}</div>
-        </div>
-        <div className='hotel-offers-wrapper'>
-          {offers.map((offer) => (
-            <OfferDisplay logoUrl={offer.logo} link={offer.link} />
-          ))}
+          <div className='hotel-price-display'>{props.price} per night</div>
+          <div className='hotel-offers-wrapper'>
+            {offers.map((offer) => (
+              <OfferDisplay logoUrl={offer.logo} link={offer.link} />
+            ))}
+          </div>
         </div>
       </HotelInfoWrapper>
     </HotelWrapper>

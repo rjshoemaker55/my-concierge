@@ -24,6 +24,13 @@
   font-weight: bold;
 }
 
+.hotel-price-display {
+  color: rgb(132, 193, 204);
+  font-weight: bold;
+  padding: 10px 0px;
+  font-size: 20px;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

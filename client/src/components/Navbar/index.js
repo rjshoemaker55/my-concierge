@@ -65,6 +65,12 @@ const Navbar = () => {
             go
           </button>
         </div>
+        <select name='sortBy' id='sort-dropdown'>
+          <option value={null}>sort by...</option>
+          <option value='price'>price</option>
+          <option value='rating'>rating</option>
+          <option value='distance'>distance</option>
+        </select>
       </div>
       <Modal show={showModal}>
         <Modal.Header>
