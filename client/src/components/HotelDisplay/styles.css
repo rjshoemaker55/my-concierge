@@ -2,13 +2,18 @@
   color: white;
   font-weight: bold;
   font-size: 30px;
-  border-bottom: 2px white solid;
+  /* border-bottom: 1px white solid; */
   background: rgba(255, 255, 255, 0.219);
   padding: 5px 15px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .hotel-info-body {
-  padding: 15px;
+  padding: 25px;
+  border-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .hotel-ranking-text {

@@ -14,21 +14,6 @@ const Landing = () => {
   const [numberNights, setNumberNights] = useState('');
   const [questionNumber, setQuestionNumber] = useState(0);
 
-  // Calls loadResults function with all input data, then redirects to results page and sends the response as props
-  const handleFinish = async () => {
-    let hotelList = await loadResults({
-      firstName,
-      destCity,
-      arriveDate,
-      numberNights,
-    });
-
-    history.push({
-      pathname: '/results',
-      state: { hotelList },
-    });
-  };
-
   return (
     <>
       <Navbar />

@@ -20,10 +20,13 @@ const Navbar = () => {
       numberNights,
     });
 
+    console.log(hotelList);
+
     history.push({
       pathname: '/results',
       state: { hotelList },
     });
+    setShowModal(false);
   };
 
   return (
@@ -54,9 +57,13 @@ const Navbar = () => {
             value={numberNights}
             onChange={(e) => setNumberNights(e.target.value)}
           />
-          <div id='navbar-submit-button' onClick={handleSubmit}>
+          <button
+            type='submit'
+            id='navbar-submit-button'
+            onClick={handleSubmit}
+          >
             go
-          </div>
+          </button>
         </div>
       </div>
       <Modal show={showModal}>
