@@ -1,7 +1,7 @@
 # my-concierge
 ✈ A simple, elegant virtual travel assistant. ✈
 
-## Version 1
+## Version 1 - 6/17/20
 - [x] Search for hotels using the city, dates, and number of nights
 
 ## Version 2 - 6/26/20
@@ -9,3 +9,6 @@
 - [ ] Sort results by price, popularity, etc.
 - [ ] Basic mobile responsiveness
 - [ ] Public deployment
+
+## Version 3 - 7/10/20
+- [ ] Possibly changing API
