@@ -6,4 +6,5 @@
 
 ## Version 2 - 6/24/20
 - [ ] Validation for city name, date, and nights
+- [ ] Sort results by price, popularity, etc.
 - [ ] Basic mobile responsiveness
