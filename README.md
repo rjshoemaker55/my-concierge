@@ -7,8 +7,9 @@
 ## Version 2 - 6/26/20
 - [ ] Validation for city name, date, and nights
 - [ ] Sort results by price, popularity, etc.
-- [ ] Basic mobile responsiveness
+- [ ] Poll for more detailed results for each listing
 - [ ] Public deployment
 
 ## Version 3 - 7/10/20
 - [ ] Possibly changing API
+- [ ] Basic mobile responsiveness
