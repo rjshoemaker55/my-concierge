@@ -25,7 +25,16 @@ app.get('/locationid/:cityName', async (req, res) => {
 
   const locationQuery = await fetch(locationQueryString, options);
   const locationResponse = await locationQuery.json();
-  res.send(locationResponse.data[0].result_object.location_id);
+
+  if (
+    !locationResponse.data.length ||
+    locationResponse.data[0].result_type == 'profiles'
+  ) {
+    res.send({ error: 'Invalid location' });
+  } else {
+    console.log(locationResponse.data[0].result_object.location_id);
+    res.send(locationResponse.data[0].result_object.location_id);
+  }
 });
 
 app.get('/hotellist/:locationid/:checkin/:nights', async (req, res) => {
