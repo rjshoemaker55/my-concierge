@@ -17,9 +17,9 @@ let options = {
 app.get('/locationid/:cityName', async (req, res) => {
   console.log('Hit locationid GET route');
 
-  let destCity = req.params.cityName;
+  const destCity = req.params.cityName;
 
-  let locationQueryString = `
+  const locationQueryString = `
     https://tripadvisor1.p.rapidapi.com/locations/auto-complete?lang=en_US&units=mi&query=${destCity}
   `;
 
@@ -32,14 +32,12 @@ app.get('/locationid/:cityName', async (req, res) => {
   ) {
     res.send({ error: 'Invalid location' });
   } else {
-    console.log(locationResponse.data[0].result_object.location_id);
     res.send(locationResponse.data[0].result_object.location_id);
   }
 });
 
 app.get('/hotellist/:locationid/:checkin/:nights', async (req, res) => {
   console.log('Hit hotellist GET route');
-
   let locationId = req.params.locationid;
   let checkIn = req.params.checkin;
   let nights = req.params.nights;

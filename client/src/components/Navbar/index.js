@@ -29,6 +29,7 @@ const Navbar = () => {
         state: { hotelList },
       });
     } catch (err) {
+      console.log(err);
       setShowModal(false);
       setErrorText(err);
       setErrorShow('show');
@@ -45,18 +46,29 @@ const Navbar = () => {
         </Link>
         <div id='navbar-form'>
           <input
-            className='navbar-inputs'
+            className={`navbar-inputs ${errorShow === 'show' && 'error-text'}`}
             type='text'
             placeholder='city'
-            value={destCity}
-            onChange={(e) => setDestCity(e.target.value)}
+            value={errorShow === 'show' ? errorText : destCity}
+            onChange={(e) =>
+              errorShow === 'show'
+                ? () => {
+                    setDestCity('');
+                    console.log('done');
+                    setErrorShow('hide');
+                  }
+                : () => {
+                    setDestCity(e.target.value);
+                    console.log('other');
+                  }
+            }
           />
           <input
             className='navbar-inputs'
             type='text'
             placeholder='arrival date (yyyy-mm-dd)'
-            value={arriveDate}
             onChange={(e) => setArriveDate(e.target.value)}
+            value={arriveDate}
           />
           <input
             className='navbar-inputs'
@@ -85,9 +97,9 @@ const Navbar = () => {
           <Modal.Title>Please wait while we load your results...</Modal.Title>
         </Modal.Header>
       </Modal>
-      <Error display={errorShow} errorClose={() => setErrorShow('hide')}>
+      {/* <Error display={errorShow} errorClose={() => setErrorShow('hide')}>
         {errorText}
-      </Error>
+      </Error> */}
     </>
   );
 };

@@ -7,6 +7,7 @@ import backgroundImage from '../../images/Background.jpg';
 
 const HotelDisplay = (props) => {
   const [showInfo, setShowInfo] = useState('none');
+  const [minimized, setMinimized] = useState(false);
   const largePhotoUrl = props.largePhoto;
   const offers = props.offers;
 
@@ -14,7 +15,9 @@ const HotelDisplay = (props) => {
     background-image: url(${props.originalPhoto});
     background-size: cover;
     width: 100%;
-    height: 600px;
+    height: ${() => {
+      minimized ? '100px' : '600px';
+    }};
     background-attachment: fixed;
     position: relative;
   `;
@@ -58,7 +61,11 @@ const HotelDisplay = (props) => {
     <HotelWrapper
       onClick={(e) => setShowInfo(showInfo === 'none' ? 'block' : 'none')}
     >
-      <HotelHeadingWrapper>
+      <HotelHeadingWrapper
+        onClick={
+          minimized ? () => setMinimized(true) : () => setMinimized(false)
+        }
+      >
         <HotelMainHeading>{props.name.toLowerCase()}</HotelMainHeading>
         <HotelSecHeading>{props.locationString.toLowerCase()}</HotelSecHeading>
       </HotelHeadingWrapper>
@@ -69,7 +76,11 @@ const HotelDisplay = (props) => {
           <div className='hotel-price-display'>{props.price} per night</div>
           <div className='hotel-offers-wrapper'>
             {offers.map((offer) => (
-              <OfferDisplay logoUrl={offer.logo} link={offer.link} />
+              <OfferDisplay
+                logoUrl={offer.logo}
+                link={offer.link}
+                key={Math.random()}
+              />
             ))}
           </div>
         </div>

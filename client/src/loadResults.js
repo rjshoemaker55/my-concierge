@@ -8,7 +8,7 @@ export const loadResults = (data) => {
           if (data.error) {
             reject('Invalid location.');
           } else {
-            return data;
+            getHotelList(data);
           }
         })
       );
@@ -23,6 +23,7 @@ export const loadResults = (data) => {
         })
         .then((parsedHotelList) => resolve(parsedHotelList));
     };
+
     getLocationId(destCity);
   });
 };
