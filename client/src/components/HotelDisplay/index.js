@@ -15,9 +15,7 @@ const HotelDisplay = (props) => {
     background-image: url(${props.originalPhoto});
     background-size: cover;
     width: 100%;
-    height: ${() => {
-      minimized ? '100px' : '600px';
-    }};
+    height: ${minimized ? '100px' : '600px'};
     background-attachment: fixed;
     position: relative;
   `;
@@ -57,17 +55,36 @@ const HotelDisplay = (props) => {
     -ms-animation: fadeIn ease 0.45s;
   `;
 
+  const MinimizeButton = styled.div`
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 1px 10px;
+    background: white;
+    color: rgba(35, 65, 75, 0.7);
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    &:hover {
+      color: white;
+      background: transparent;
+    }
+  `;
+
   return (
     <HotelWrapper
       onClick={(e) => setShowInfo(showInfo === 'none' ? 'block' : 'none')}
     >
-      <HotelHeadingWrapper
-        onClick={
-          minimized ? () => setMinimized(true) : () => setMinimized(false)
-        }
-      >
+      <HotelHeadingWrapper>
         <HotelMainHeading>{props.name.toLowerCase()}</HotelMainHeading>
         <HotelSecHeading>{props.locationString.toLowerCase()}</HotelSecHeading>
+        <MinimizeButton
+          onClick={() => (minimized ? setMinimized(false) : setMinimized(true))}
+        >
+          -
+        </MinimizeButton>
       </HotelHeadingWrapper>
       <HotelInfoWrapper>
         <div className='hotel-info-header'>information</div>

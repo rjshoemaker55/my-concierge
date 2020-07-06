@@ -29,7 +29,6 @@ const Navbar = () => {
         state: { hotelList },
       });
     } catch (err) {
-      console.log(err);
       setShowModal(false);
       setErrorText(err);
       setErrorShow('show');
@@ -50,18 +49,13 @@ const Navbar = () => {
             type='text'
             placeholder='city'
             value={errorShow === 'show' ? errorText : destCity}
-            onChange={(e) =>
-              errorShow === 'show'
-                ? () => {
-                    setDestCity('');
-                    console.log('done');
-                    setErrorShow('hide');
-                  }
-                : () => {
-                    setDestCity(e.target.value);
-                    console.log('other');
-                  }
-            }
+            onChange={(e) => setDestCity(e.target.value)}
+            onClick={() => {
+              if (errorShow === 'show') {
+                setDestCity('');
+                setErrorShow('hide');
+              }
+            }}
           />
           <input
             className='navbar-inputs'
