@@ -5,8 +5,6 @@ import HotelDisplay from '../../components/HotelDisplay';
 import './styles.css';
 
 const Results = (props) => {
-  const hotelList = props.location.state.hotelList;
-
   const filteredList = props.location.state.hotelList.filter(
     (hotel) => hotel.hac_offers.offers.length
   );
@@ -16,10 +14,9 @@ const Results = (props) => {
       <Navbar />
       <div className='hotel-list'>
         {filteredList.map((hotel) => {
-          console.log(hotel);
           return (
             <HotelDisplay
-              key={hotel.name}
+              key={Math.random()}
               name={hotel.name}
               locationString={hotel.location_string}
               originalPhoto={
@@ -32,6 +29,7 @@ const Results = (props) => {
               class={hotel.hotel_class}
               offers={hotel.hac_offers.offers}
               price={hotel.price}
+              minimized={hotel.minimized}
             />
           );
         })}

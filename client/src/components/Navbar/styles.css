@@ -46,6 +46,9 @@
   color: rgb(255, 246, 189);
   font-weight: bold;
   width: 200px;
+  padding-top: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #navbar-submit-button {
@@ -75,4 +78,10 @@
 
 .modal {
   margin-top: 100px;
+}
+
+.error-text {
+  color: rgb(77, 12, 12);
+  background-color: rgb(255, 100, 126);
+  border-radius: 5px;
 }

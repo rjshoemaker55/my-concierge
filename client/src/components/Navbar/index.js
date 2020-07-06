@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 import { loadResults } from '../../loadResults';
+import Error from '../Error';
 
 import './styles.css';
 
@@ -11,21 +12,29 @@ const Navbar = () => {
   const [arriveDate, setArriveDate] = useState('');
   const [numberNights, setNumberNights] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [errorShow, setErrorShow] = useState('hide');
+  const [errorText, setErrorText] = useState('');
 
   const handleSubmit = async () => {
     setShowModal(true);
-    let hotelList = await loadResults({
-      destCity,
-      arriveDate,
-      numberNights,
-    });
 
-    console.log(hotelList);
+    try {
+      let hotelList = await loadResults({
+        destCity,
+        arriveDate,
+        numberNights,
+      });
+      history.push({
+        pathname: '/results',
+        state: { hotelList },
+      });
+    } catch (err) {
+      console.log(err);
+      setShowModal(false);
+      setErrorText(err);
+      setErrorShow('show');
+    }
 
-    history.push({
-      pathname: '/results',
-      state: { hotelList },
-    });
     setShowModal(false);
   };
 
@@ -37,18 +46,29 @@ const Navbar = () => {
         </Link>
         <div id='navbar-form'>
           <input
-            className='navbar-inputs'
+            className={`navbar-inputs ${errorShow === 'show' && 'error-text'}`}
             type='text'
             placeholder='city'
-            value={destCity}
-            onChange={(e) => setDestCity(e.target.value)}
+            value={errorShow === 'show' ? errorText : destCity}
+            onChange={(e) =>
+              errorShow === 'show'
+                ? () => {
+                    setDestCity('');
+                    console.log('done');
+                    setErrorShow('hide');
+                  }
+                : () => {
+                    setDestCity(e.target.value);
+                    console.log('other');
+                  }
+            }
           />
           <input
             className='navbar-inputs'
             type='text'
             placeholder='arrival date (yyyy-mm-dd)'
-            value={arriveDate}
             onChange={(e) => setArriveDate(e.target.value)}
+            value={arriveDate}
           />
           <input
             className='navbar-inputs'
@@ -77,6 +97,9 @@ const Navbar = () => {
           <Modal.Title>Please wait while we load your results...</Modal.Title>
         </Modal.Header>
       </Modal>
+      {/* <Error display={errorShow} errorClose={() => setErrorShow('hide')}>
+        {errorText}
+      </Error> */}
     </>
   );
 };
