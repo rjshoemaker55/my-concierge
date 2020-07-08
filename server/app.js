@@ -36,13 +36,14 @@ app.get('/locationid/:cityName', async (req, res) => {
   }
 });
 
-app.get('/hotellist/:locationid/:checkin/:nights', async (req, res) => {
+app.get('/hotellist/:locationid/:checkin/:nights/:sortBy', async (req, res) => {
   console.log('Hit hotellist GET route');
   let locationId = req.params.locationid;
   let checkIn = req.params.checkin;
   let nights = req.params.nights;
+  let sortBy = req.params.sortBy;
 
-  let hotelListQueryString = `https://tripadvisor1.p.rapidapi.com/hotels/list?offset=0&currency=USD&limit=30&order=asc&lang=en_US&sort=recommended&location_id=${locationId}&adults=1&checkin=${checkIn}&rooms=1&nights=${nights})`;
+  let hotelListQueryString = `https://tripadvisor1.p.rapidapi.com/hotels/list?offset=0&currency=USD&limit=30&order=asc&lang=en_US&sort=recommended&location_id=${locationId}&adults=1&checkin=${checkIn}&rooms=1&nights=${nights}&sort=${sortBy})`;
 
   const hotelListQuery = await fetch(hotelListQueryString, options);
   const hotelListResponse = await hotelListQuery.json();
