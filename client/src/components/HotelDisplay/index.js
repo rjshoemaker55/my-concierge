@@ -89,7 +89,6 @@ const HotelDisplay = (props) => {
       <HotelInfoWrapper>
         <div className='hotel-info-header'>information</div>
         <div className='hotel-info-body'>
-          <div className='hotel-ranking-text'>"{props.rankingText}"</div>
           <div className='hotel-price-display'>{props.price} per night</div>
           <div className='hotel-offers-wrapper'>
             {offers.map((offer) => (

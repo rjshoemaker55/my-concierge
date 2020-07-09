@@ -11,30 +11,47 @@ const Navbar = () => {
   const [destCity, setDestCity] = useState('');
   const [arriveDate, setArriveDate] = useState('');
   const [numberNights, setNumberNights] = useState('');
+  const [sortBy, setSortBy] = useState('recommended');
   const [showModal, setShowModal] = useState(false);
   const [errorShow, setErrorShow] = useState('hide');
   const [errorText, setErrorText] = useState('');
 
+  // Search form submission
   const handleSubmit = async () => {
     setShowModal(true);
+
+    if (arriveDate < new Date().toJSON().slice(0, 10)) {
+      displayError('Invalid date.', 'date');
+      return;
+    }
+
+    if (numberNights > 10) {
+      displayError('Too many nights.', 'nights');
+      return;
+    }
 
     try {
       let hotelList = await loadResults({
         destCity,
         arriveDate,
         numberNights,
+        sortBy,
       });
+
       history.push({
         pathname: '/results',
         state: { hotelList },
       });
     } catch (err) {
-      setShowModal(false);
-      setErrorText(err);
-      setErrorShow('show');
+      displayError(err.msg, 'location');
     }
-
     setShowModal(false);
+  };
+
+  const displayError = (message, category) => {
+    setShowModal(false);
+    setErrorText(message);
+    setErrorShow(category);
   };
 
   return (
@@ -45,32 +62,59 @@ const Navbar = () => {
         </Link>
         <div id='navbar-form'>
           <input
-            className={`navbar-inputs ${errorShow === 'show' && 'error-text'}`}
+            className={`navbar-inputs ${
+              errorShow === 'location' && 'error-text'
+            }`}
             type='text'
             placeholder='city'
-            value={errorShow === 'show' ? errorText : destCity}
+            value={errorShow === 'location' ? errorText : destCity}
             onChange={(e) => setDestCity(e.target.value)}
             onClick={() => {
-              if (errorShow === 'show') {
+              if (errorShow === 'location') {
                 setDestCity('');
                 setErrorShow('hide');
               }
             }}
           />
           <input
-            className='navbar-inputs'
+            className={`navbar-inputs ${errorShow === 'date' && 'error-text'}`}
             type='text'
             placeholder='arrival date (yyyy-mm-dd)'
             onChange={(e) => setArriveDate(e.target.value)}
-            value={arriveDate}
+            value={errorShow === 'date' ? errorText : arriveDate}
+            onClick={() => {
+              if (errorShow === 'date') {
+                setArriveDate('');
+                setErrorShow('hide');
+              }
+            }}
           />
           <input
-            className='navbar-inputs'
+            className={`navbar-inputs ${
+              errorShow === 'nights' && 'error-text'
+            }`}
             type='number'
             placeholder='nights'
-            value={numberNights}
+            value={errorShow === 'nights' ? errorText : numberNights} // THIS ONE LINER NOT WORKING
             onChange={(e) => setNumberNights(e.target.value)}
+            onClick={() => {
+              if (errorShow === 'nights') {
+                setNumberNights('');
+                setErrorShow('hide');
+              }
+            }}
           />
+          <select
+            name='sort-by'
+            id='sort-dropdown'
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+          >
+            <option value={null}>sort by...</option>
+            <option value='price'>recommended</option>
+            <option value='popularity'>popularity</option>
+            <option value='price'>price</option>
+          </select>
           <button
             type='submit'
             id='navbar-submit-button'
@@ -79,12 +123,6 @@ const Navbar = () => {
             go
           </button>
         </div>
-        <select name='sortBy' id='sort-dropdown'>
-          <option value={null}>sort by...</option>
-          <option value='price'>price</option>
-          <option value='rating'>rating</option>
-          <option value='distance'>distance</option>
-        </select>
       </div>
       <Modal show={showModal}>
         <Modal.Header>
