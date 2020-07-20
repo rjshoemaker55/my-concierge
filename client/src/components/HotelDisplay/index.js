@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import './styles.css';
 import OfferDisplay from '../OfferDisplay';
-import backgroundImage from '../../images/Background.jpg';
+import { useWindowDimensions } from '../../useWindowDimensions';
 
 const HotelDisplay = (props) => {
   const [showInfo, setShowInfo] = useState('none');
   const [minimized, setMinimized] = useState(false);
-  const largePhotoUrl = props.largePhoto;
   const offers = props.offers;
+  const { height, width } = useWindowDimensions();
 
   const HotelWrapper = styled.div`
     background-image: url(${props.originalPhoto});
@@ -53,6 +53,9 @@ const HotelDisplay = (props) => {
     -moz-animation: fadeIn ease 0.45s;
     -o-animation: fadeIn ease 0.45s;
     -ms-animation: fadeIn ease 0.45s;
+    @media only screen and (max-width: 768px) {
+      text-align: center;
+    }
   `;
 
   const MinimizeButton = styled.div`
@@ -91,7 +94,7 @@ const HotelDisplay = (props) => {
         <div className='hotel-info-body'>
           <div className='hotel-price-display'>{props.price} per night</div>
           <div className='hotel-offers-wrapper'>
-            {offers.map((offer) => (
+            {(width > 768 ? offers : offers.slice(0, 6)).map((offer) => (
               <OfferDisplay
                 logoUrl={offer.logo}
                 link={offer.link}

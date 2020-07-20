@@ -5,6 +5,7 @@ import Landing from './screens/Landing';
 import Results from './screens/Results';
 
 import './App.css';
+import './mobile.css';
 
 function App() {
   return (

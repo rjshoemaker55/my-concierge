@@ -13,6 +13,9 @@ const Results = (props) => {
     <>
       <Navbar />
       <div className='hotel-list'>
+        <div id='instructions-bar'>
+          Click on a hotel's picture to view booking information.
+        </div>
         {filteredList.map((hotel) => {
           return (
             <HotelDisplay
