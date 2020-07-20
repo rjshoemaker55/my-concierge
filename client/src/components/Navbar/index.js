@@ -15,6 +15,7 @@ const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
   const [errorShow, setErrorShow] = useState('hide');
   const [errorText, setErrorText] = useState('');
+  const [showFullNavbar, setShowFullNavbar] = useState(true);
 
   // Search form submission
   const handleSubmit = async () => {
@@ -60,7 +61,7 @@ const Navbar = () => {
         <Link id='navbar-title' to='/'>
           my concierge
         </Link>
-        <div id='navbar-form'>
+        <div id='navbar-form' style={{ display: !showFullNavbar && 'none' }}>
           <input
             className={`navbar-inputs ${
               errorShow === 'location' && 'error-text'
@@ -123,6 +124,12 @@ const Navbar = () => {
             go
           </button>
         </div>
+        <button
+          className='open-full-navbar'
+          onClick={() => setShowFullNavbar(!showFullNavbar)}
+        >
+          {showFullNavbar ? '↑' : '↓'}
+        </button>
       </div>
       <Modal show={showModal}>
         <Modal.Header>

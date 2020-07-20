@@ -85,3 +85,15 @@
   background-color: rgb(255, 100, 126);
   border-radius: 5px;
 }
+
+.open-full-navbar {
+  display: none;
+  font-weight: bold;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0px 8px;
+}
