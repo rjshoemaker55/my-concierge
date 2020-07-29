@@ -6,7 +6,7 @@ import Error from '../Error';
 
 import './styles.css';
 
-const Navbar = () => {
+const Navbar = (props) => {
   let history = useHistory();
   const [destCity, setDestCity] = useState('');
   const [arriveDate, setArriveDate] = useState('');
@@ -57,11 +57,17 @@ const Navbar = () => {
 
   return (
     <>
-      <div id='navbar-wrapper'>
+      <div
+        id='navbar-wrapper'
+        style={{ background: props.navbarMaximized && 'rgba(35, 65, 75, 0.9)' }}
+      >
         <Link id='navbar-title' to='/'>
           my concierge
         </Link>
-        <div id='navbar-form' style={{ display: !showFullNavbar && 'none' }}>
+        <div
+          id='navbar-form'
+          style={{ display: !props.navbarMaximized && 'none' }}
+        >
           <input
             className={`navbar-inputs ${
               errorShow === 'location' && 'error-text'
@@ -96,7 +102,7 @@ const Navbar = () => {
             }`}
             type='number'
             placeholder='nights'
-            value={errorShow === 'nights' ? errorText : numberNights} // THIS ONE LINER NOT WORKING
+            value={errorShow === 'nights' ? errorText : numberNights}
             onChange={(e) => setNumberNights(e.target.value)}
             onClick={() => {
               if (errorShow === 'nights') {
@@ -126,9 +132,10 @@ const Navbar = () => {
         </div>
         <button
           className='open-full-navbar'
-          onClick={() => setShowFullNavbar(!showFullNavbar)}
+          onClick={props.switchNavbar}
+          style={{ display: !props.minimizeButtonShow && 'none' }}
         >
-          {showFullNavbar ? '↑' : '↓'}
+          {props.navbarMaximized ? '↑' : '↓'}
         </button>
       </div>
       <Modal show={showModal}>

@@ -1,17 +1,22 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import HotelDisplay from '../../components/HotelDisplay';
 import './styles.css';
 
 const Results = (props) => {
+  const [navbarMaximized, setNavbarMaximized] = useState(true);
+
   const filteredList = props.location.state.hotelList.filter(
     (hotel) => hotel.hac_offers.offers.length
   );
 
   return (
     <>
-      <Navbar />
+      <Navbar
+        switchNavbar={() => setNavbarMaximized(!navbarMaximized)}
+        navbarMaximized={navbarMaximized}
+        minimizeButtonShow={true}
+      />
       <div className='hotel-list'>
         <div id='instructions-bar'>
           Click on a hotel's picture to view booking information.

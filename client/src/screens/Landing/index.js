@@ -16,8 +16,7 @@ const Landing = () => {
 
   return (
     <>
-      <Navbar />
-
+      <Navbar navbarMaximized={true} />
       <div className='landing-wrapper'>
         <div className='landing-header-wrapper'>
           <div className='landing-small-header'>welcome to</div>

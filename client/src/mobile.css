@@ -46,4 +46,13 @@
     margin-top: 10px;
     line-height: 0.8;
   }
+
+  /* Results page */
+  .hotel-list {
+    margin-top: 60px;
+  }
+
+  .hotel-info-header {
+    font-size: 20px;
+  }
 }

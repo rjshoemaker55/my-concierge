@@ -15,7 +15,7 @@ const HotelDisplay = (props) => {
     background-image: url(${props.originalPhoto});
     background-size: cover;
     width: 100%;
-    height: ${minimized ? '100px' : '600px'};
+    height: ${minimized ? (width < 414 ? '160px' : '100px') : '600px'};
     background-attachment: fixed;
     position: relative;
   `;
@@ -56,6 +56,9 @@ const HotelDisplay = (props) => {
     @media only screen and (max-width: 768px) {
       text-align: center;
     }
+    @media only screen and (max-width: 414px) {
+      width: 60%;
+    }
   `;
 
   const MinimizeButton = styled.div`
@@ -94,7 +97,12 @@ const HotelDisplay = (props) => {
         <div className='hotel-info-body'>
           <div className='hotel-price-display'>{props.price} per night</div>
           <div className='hotel-offers-wrapper'>
-            {(width > 768 ? offers : offers.slice(0, 6)).map((offer) => (
+            {(width > 768
+              ? offers
+              : width > 414
+              ? offers.slice(0, 6)
+              : offers.slice(0, 3)
+            ).map((offer) => (
               <OfferDisplay
                 logoUrl={offer.logo}
                 link={offer.link}

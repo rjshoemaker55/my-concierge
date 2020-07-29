@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const fetch = require('node-fetch');
 const port = 4000;
+require('dotenv').config();
 
 app.use(cors());
 
@@ -10,7 +11,7 @@ let options = {
   method: 'GET',
   headers: {
     'x-rapidapi-host': 'tripadvisor1.p.rapidapi.com',
-    'x-rapidapi-key': '2f3a0e5559mshf0b9a7a94324ff7p1bf4dajsna06e1715474c',
+    'x-rapidapi-key': process.env.API_KEY,
   },
 };
 
