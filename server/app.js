@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const fetch = require('node-fetch');
-const port = 4000;
+const port = process.env.PORT || 4000;
+const path = require('path');
 require('dotenv').config();
+
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.use(cors());
 
@@ -14,6 +17,10 @@ let options = {
     'x-rapidapi-key': process.env.API_KEY,
   },
 };
+
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
 
 app.get('/locationid/:cityName', async (req, res) => {
   console.log('Hit locationid GET route');
