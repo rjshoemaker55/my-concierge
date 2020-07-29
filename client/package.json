@@ -38,6 +38,5 @@
   "devDependencies": {
     "gh-pages": "^2.1.1"
   },
-  "homepage": "https://localhost:4000",
-  "proxy": "http://localhost:4000"
+  "homepage": "https://my-concierge0.herokuapp.com"
 }
