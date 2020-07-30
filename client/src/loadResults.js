@@ -15,7 +15,9 @@ export const loadResults = (data) => {
     };
 
     const getHotelList = async (locationId) => {
-      await fetch(`/${locationId}/${arriveDate}/${numberNights}/${sortBy}`)
+      await fetch(
+        `/hotellist/${locationId}/${arriveDate}/${numberNights}/${sortBy}`
+      )
         .then((res) => {
           return res.json();
         })
