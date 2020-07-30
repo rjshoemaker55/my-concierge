@@ -17,6 +17,9 @@
     "react-scripts": "3.2.0",
     "styled-components": "^5.1.1"
   },
+  "scripts": {
+    "build": "cd client && react-scripts build"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
