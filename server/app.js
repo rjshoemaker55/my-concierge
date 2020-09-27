@@ -40,7 +40,7 @@ app.get('/locationid/:cityName', async (req, res) => {
   ) {
     res.send({ error: 'Invalid location' });
   } else {
-    console.error('Error n location search: ' + locationResponse);
+    console.error('Location search: ' + locationResponse.JSON());
     res.send(locationResponse.data[0].result_object.location_id);
   }
 });
