@@ -4,10 +4,6 @@
 
 My Concierge is an elegant virtual travel assistant. It provides a simplistic, minimalist approach to searching for hotels and flights.
 
-## Work in Progress
-
-Due to API issues, the flight and hotel searches are not fully functional. We have included some placeholder flights for the time being, but this feature will be completed shortly.
-
 ### What's to come
 
 Besides the flight and hotel search functionality, we will also be adding:
@@ -20,10 +16,11 @@ Will add other options as they come to mind.
 
 ## How to use
 
-Visit the deployed app [Here](https://rjshoemaker55.github.io/myconcierge/)
+Visit the deployed app [Here](https://my-concierge0.herokuapp.com)
 
 **or**
 
 1.  Clone the project to your machine
-2.  Run `yarn` or `npm install` to install the necessary dependencies. (If you're using NPM, please delete the `yarn.lock` file before this step.)
-3.  Run `yarn start` or `npm start` and navigate to [http://localhost:5000](http://localhost:5000)`in your browser
+2.  Run `yarn` or `npm install` to install the necessary dependencies. Also run in the server directory. (If you're using NPM, please delete the `yarn.lock` file before this step.)
+3.  Run `yarn start` or `npm start` in the client directory and navigate to [http://localhost:4000](http://localhost:4000)`in your browser
+4.  Run `node app.js` from the server directory to spin up the local server
