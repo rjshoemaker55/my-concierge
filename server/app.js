@@ -40,7 +40,7 @@ app.get('/locationid/:cityName', async (req, res) => {
   ) {
     res.send({ error: 'Invalid location' });
   } else {
-    console.error('Location search: ' + locationResponse.JSON());
+    console.error('Location search: ' + JSON.stringify(locationResponse));
     res.send(locationResponse.data[0].result_object.location_id);
   }
 });
@@ -56,7 +56,7 @@ app.get('/hotellist/:locationid/:checkin/:nights/:sortBy', async (req, res) => {
 
   const hotelListQuery = await fetch(hotelListQueryString, options);
   const hotelListResponse = await hotelListQuery.json();
-  console.error('Error n location search: ' + locationResponse);
+  console.log(JSON.stringify(hotelListResponse));
   res.send(hotelListResponse.data);
 });
 

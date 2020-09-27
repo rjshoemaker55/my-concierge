@@ -7,11 +7,17 @@
 
 #instructions-bar {
   padding: 5px 0px;
-  background: rgba(245, 168, 69, 0.75);
+  background: rgba(255, 223, 39, 0.95);
   font-weight: bold;
   text-align: center;
-  border-bottom: 2px white solid;
-  border-top: 2px white solid;
+  font-size: 20px;
+  border-radius: 5px;
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 80%;
 }
 
 #results-header {

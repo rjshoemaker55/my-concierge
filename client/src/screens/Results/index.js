@@ -18,9 +18,6 @@ const Results = (props) => {
         minimizeButtonShow={true}
       />
       <div className='hotel-list'>
-        <div id='instructions-bar'>
-          Click on a hotel's picture to view booking information.
-        </div>
         {filteredList.map((hotel) => {
           return (
             <HotelDisplay
@@ -41,6 +38,9 @@ const Results = (props) => {
             />
           );
         })}
+      </div>
+      <div id='instructions-bar'>
+        Click on a hotel's picture to view booking information.
       </div>
     </>
   );
